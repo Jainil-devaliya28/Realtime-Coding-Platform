@@ -49,9 +49,26 @@ async function bootstrap(): Promise<void> {
     })
   );
 
+  const allowedOrigins = [
+    config.FRONTEND_URL,
+    config.APP_URL,
+    'http://localhost:3000',
+    'https://realtime-code-platform.vercel.app',
+  ];
+
   app.use(
     cors({
-      origin: [config.FRONTEND_URL, config.APP_URL],
+      origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (
+          allowedOrigins.includes(origin) ||
+          origin.endsWith('.vercel.app') ||
+          origin.startsWith('http://localhost:')
+        ) {
+          return callback(null, true);
+        }
+        return callback(null, true);
+      },
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
       allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-ID'],

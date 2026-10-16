@@ -21,7 +21,12 @@ export default function LoginPage() {
       toast.success("Welcome back!")
       router.push("/dashboard")
     } catch (error: any) {
-      const msg = error?.response?.data?.error?.message || "Invalid credentials"
+      const msg =
+        error?.response?.data?.error?.message ||
+        (error?.code === "ERR_NETWORK" || error?.message === "Network Error"
+          ? "Unable to reach the backend server. Please ensure the backend is running."
+          : error?.message) ||
+        "Invalid credentials"
       toast.error(msg)
     }
   }

@@ -32,7 +32,7 @@ export const apiRateLimit = rateLimit({
 // Strict rate limiter for auth endpoints
 export const authRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10,
+  max: config.NODE_ENV === 'production' ? 30 : 100,
   standardHeaders: true,
   legacyHeaders: false,
   message: {

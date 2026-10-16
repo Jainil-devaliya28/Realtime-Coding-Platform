@@ -48,7 +48,20 @@ async function verifySocketToken(token: string): Promise<{ userId: string; email
 export function createSocketServer(httpServer: HTTPServer): SocketServer {
   const io = new SocketServer<ClientToServerEvents, ServerToClientEvents>(httpServer, {
     cors: {
-      origin: config.FRONTEND_URL,
+      origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (
+          origin === config.FRONTEND_URL ||
+          origin === config.APP_URL ||
+          origin === 'http://localhost:3000' ||
+          origin === 'https://realtime-code-platform.vercel.app' ||
+          origin.endsWith('.vercel.app') ||
+          origin.startsWith('http://localhost:')
+        ) {
+          return callback(null, true);
+        }
+        return callback(null, true);
+      },
       methods: ['GET', 'POST'],
       credentials: true,
     },

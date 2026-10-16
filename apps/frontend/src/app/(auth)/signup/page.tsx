@@ -23,7 +23,12 @@ export default function SignupPage() {
       toast.success("Account created! Welcome!")
       router.push("/dashboard")
     } catch (error: any) {
-      const msg = error?.response?.data?.error?.message || "Signup failed"
+      const msg =
+        error?.response?.data?.error?.message ||
+        (error?.code === "ERR_NETWORK" || error?.message === "Network Error"
+          ? "Unable to reach the backend server. Please ensure the backend is running."
+          : error?.message) ||
+        "Signup failed"
       toast.error(msg)
     }
   }
