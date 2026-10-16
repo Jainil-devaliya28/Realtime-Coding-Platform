@@ -1,0 +1,30 @@
+{
+  "name": "@code-platform/worker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@code-platform/shared": "*",
+    "@prisma/client": "^5.7.1",
+    "bullmq": "^5.1.1",
+    "dockerode": "^4.0.2",
+    "dotenv": "^18.0.1",
+    "ioredis": "^5.3.2",
+    "socket.io-client": "^4.6.2",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/dockerode": "^3.3.23",
+    "@types/node": "^20.11.0",
+    "@types/uuid": "^9.0.7",
+    "prisma": "^5.7.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}

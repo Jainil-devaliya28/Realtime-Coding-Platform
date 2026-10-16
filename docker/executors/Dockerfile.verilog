@@ -1,0 +1,9 @@
+FROM alpine:3.19
+LABEL description="Icarus Verilog code executor sandbox"
+
+RUN apk add --no-cache iverilog
+RUN adduser -D -u 9999 -s /bin/sh sandbox
+RUN mkdir -p /code && chown sandbox:sandbox /code
+
+WORKDIR /code
+USER sandbox

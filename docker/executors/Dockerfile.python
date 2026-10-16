@@ -1,0 +1,8 @@
+FROM python:3.12-alpine
+LABEL description="Python 3.12 code executor sandbox"
+
+RUN adduser -D -u 9999 -s /bin/sh sandbox
+RUN mkdir -p /code && chown sandbox:sandbox /code
+
+WORKDIR /code
+USER sandbox
