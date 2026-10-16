@@ -1,5 +1,8 @@
 # 🚀 Realtime Distributed AI Code Execution Platform
 
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployment%20Live-brightgreen?logo=vercel)](https://realtime-code-platform.vercel.app)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/Jainil-devaliya28/Realtime-Coding-Platform)
+
 A production-grade, collaborative cloud IDE platform with real-time code editing, AI debugging assistance, secure Docker-based code execution, and comprehensive analytics.
 
 > Think Replit + LeetCode + GitHub Codespaces — built from scratch.
